@@ -19,8 +19,7 @@
       border: 1px solid #ccc;
     }
     .panel h1 { font-size: 15px; margin: 0 0 8px; }
-    .stats { font-size: 12px; line-height: 1.45; }
-    #morph { margin: 10px 0 6px; padding: 6px 10px; font-size: 13px; width: 100%; cursor: pointer; }
+    #morph { margin: 4px 0 6px; padding: 6px 10px; font-size: 13px; width: 100%; cursor: pointer; }
     .scrub { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #555; }
     .scrub input { flex: 1; }
   </style>
@@ -30,7 +29,6 @@
   <div id="graph"></div>
   <div class="panel">
     <h1>Subgraph: topology vs geography</h1>
-    <div class="stats" id="stats"></div>
     <button type="button" id="morph" disabled>Computing force layout…</button>
     <div class="scrub">
       <span>geo</span>
@@ -54,10 +52,6 @@
     edges: {smooth: {type: "continuous", roundness: 0.15}, arrows: {to: {scaleFactor: 0.25}}},
     nodes: {shape: "dot", font: {size: 12}}
   });
-  document.getElementById("stats").innerHTML =
-    `method: ${DATA.stats.method}<br>radius: ${DATA.stats.radius}<br>` +
-    `nodes: ${DATA.stats.n_nodes}<br>directed edges: ${DATA.stats.n_edges}<br>` +
-    `road length: ${(DATA.stats.total_length_km||0).toFixed(2)} km<br>${DATA.note}`;
 
   const BM = DATA.basemap;
   const mapEl = document.getElementById("map");
